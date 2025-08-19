@@ -27,6 +27,30 @@ Answer:
 Paste the `dim_station.sql` model here:
 
 ```sql
+with station_data as (
+    select
+        station_name,
+        sum(duration) as total_duration,
+        count(case when station_name = start_station_name then 1 end) as total_starts,
+        count(case when station_name = end_station_name then 1 end) as total_ends
+    from {{ ref('fact_rides') }}
+    cross join (
+        select distinct start_station_name as station_name from {{ ref('fact_rides') }}
+        union
+        select distinct end_station_name as station_name from {{ ref('fact_rides') }}
+    ) as stations
+    where station_name in (start_station_name, end_station_name)
+    group by station_name
+)
+
+select
+    station_name,
+    total_duration,
+    total_starts,
+    total_ends
+from station_data
+
+dbt run (at terminal)
 
 ```
 
