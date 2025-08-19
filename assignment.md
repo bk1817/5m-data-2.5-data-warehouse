@@ -50,7 +50,19 @@ select
     total_ends
 from station_data
 
-dbt run (at terminal)
+dbt run 
+
+| station_name | total_duration | total_starts | total_ends | 
+| "Central Park" | 12,450 | 320 | 298 | 
+| "Downtown Hub" | 8,900 | 210 | 215 | 
+| "East Station" | 5,300 | 150 | 160 | 
+| ... | ... | ... | ... | 
+
+
+⚠️ Note: These values are illustrative. Your actual results will depend on the data in fact_rides.
+
+
+
 
 ```
 
