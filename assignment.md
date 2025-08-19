@@ -58,12 +58,6 @@ dbt run
 | "East Station" | 5,300 | 150 | 160 | 
 | ... | ... | ... | ... | 
 
-
-⚠️ Note: These values are illustrative. Your actual results will depend on the data in fact_rides.
-
-
-
-
 ```
 
 ## Submission
